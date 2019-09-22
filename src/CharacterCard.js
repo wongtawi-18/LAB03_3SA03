@@ -1,24 +1,39 @@
-export default class CharacterCard extends Component {
-    
-   export default class CharacterCard extends Component {
-    constructor(props) {
-        super(props)
-        this.state = {
-            active: false,
-        }
+import React from 'react';
+
+
+class CharacterCard extends React.Component {
+    state = {
+        active: false
     }
 
     activate = () => {
-        if (!this.state.active) {
-            this.setState({ active: true, seq })
+        this.setState({
+            active: true
+        });
+
+        if (this.state.active === false)
+            this.props.activationHandler(this.props.value);
+    }
+    componentDidUpdate = (prevProps) => {
+        console.log(this.props.attempt);
+        if (prevProps.attempt !== this.props.attempt || prevProps.reset !==this.props.reset) 
+        {
+            this.setState({ active: false })
+            console.log('...');
         }
     }
     render() {
+        //  let activateClass = this.state.act
         let className = `card ${this.state.active ? 'activeCard' : ''}`
         return (
             <div className={className} onClick={this.activate}>
+
                 {this.props.value}
             </div>
+
         )
     }
 }
+
+
+export default CharacterCard;

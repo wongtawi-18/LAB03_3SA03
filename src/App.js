@@ -78,7 +78,9 @@ class App extends React.Component {
           this.state.completed &&<button onClick={this.reset}>Complete reset</button>
         }
 
+
       </div>
+      
 
     )
 
